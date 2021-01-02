@@ -4,30 +4,24 @@
 class StarwarsTerminal < Formula
   desc "StarWars terminal themes inspired at Pokemon-Terminal. https://github.com/LazoCoder/Pokemon-Terminal"
   homepage "https://github.com/mokuo/starwars-terminal"
-  url "https://github.com/mokuo/starwars-terminal/archive/0.tar.gz"
-  sha256 "a278784e852884d71b53cc4e5def3c4ec7952f94a4a69d5fee6d21d3555f3210"
+  url "https://github.com/mokuo/starwars-terminal/archive/0.1.0.tar.gz"
+  sha256 "234338597e5079538ae7677f1f0bff2c5bc08df1a2ae6700ae3ecd54a1ec3830"
   license ""
 
   depends_on "go" => :build
 
   def install
-    ENV['GOPATH'] = buildpath
-    starwars_path = buildpath/"src/github.com/mokuo/starwars-terminal/"
-    starwars_path.install buildpath.children
+    cmd_path = buildpath/"cmd/starwars/"
+    img_path = bin/"images/"
 
-    cd starwars_path/"cmd/starwars" do
+    cd cmd_path do
       system "go", "build"
       bin.install "starwars"
-    end
-
-    cd starwars_path do
-      prefix.install Dir["images/*"]
+      img_path.install Dir["images/*"]
     end
   end
 
   test do
-    assert_match "", shell_output("#{bin}/starwars")
-    assert_match "", shell_output("#{bin}/starwars r2-d2")
     assert_match "c-3po", shell_output("#{bin}/starwars l")
     assert_match "bb-8", shell_output("#{bin}/starwars list")
   end
