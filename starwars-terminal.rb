@@ -4,8 +4,8 @@
 class StarwarsTerminal < Formula
   desc "StarWars terminal themes inspired at Pokemon-Terminal. https://github.com/LazoCoder/Pokemon-Terminal"
   homepage "https://github.com/mokuo/starwars-terminal"
-  url "https://github.com/mokuo/starwars-terminal/archive/0.1.0.tar.gz"
-  sha256 "234338597e5079538ae7677f1f0bff2c5bc08df1a2ae6700ae3ecd54a1ec3830"
+  url File.read(File.expand_path("../url.txt", __FILE__)).chomp
+  sha256 File.read(File.expand_path("../sha256.txt", __FILE__)).chomp
   license ""
 
   depends_on "go" => :build
