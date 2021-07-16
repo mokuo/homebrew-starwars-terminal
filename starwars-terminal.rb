@@ -11,18 +11,18 @@ class StarwarsTerminal < Formula
   depends_on "go" => :build
 
   def install
-    cmd_path = buildpath/"cmd/starwars/"
+    cmd_path = buildpath/"cmd/sw/"
     img_path = bin/"images/"
 
     cd cmd_path do
       system "go", "build"
-      bin.install "starwars"
+      bin.install "sw"
       img_path.install Dir["images/*"]
     end
   end
 
   test do
-    assert_match "c-3po", shell_output("#{bin}/starwars l")
-    assert_match "bb-8", shell_output("#{bin}/starwars list")
+    assert_match "c-3po", shell_output("#{bin}/sw l")
+    assert_match "bb-8", shell_output("#{bin}/sw list")
   end
 end
