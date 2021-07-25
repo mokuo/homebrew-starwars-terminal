@@ -1,1 +1,1 @@
-https://api.github.com/repos/mokuo/starwars-terminal/tarball/v0.1.2
+https://api.github.com/repos/mokuo/starwars-terminal/tarball/v0.1.3
